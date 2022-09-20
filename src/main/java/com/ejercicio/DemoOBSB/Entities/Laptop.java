@@ -34,6 +34,10 @@ public class Laptop {
         this.online = online;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -85,4 +89,6 @@ public class Laptop {
     public void setOnline(Boolean online) {
         this.online = online;
     }
+
+
 }
