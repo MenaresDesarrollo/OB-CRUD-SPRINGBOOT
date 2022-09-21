@@ -2,6 +2,8 @@ package com.ejercicio.DemoOBSB.Controller;
 
 import com.ejercicio.DemoOBSB.Entities.Laptop;
 import com.ejercicio.DemoOBSB.Repository.LaptopRepository;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +28,8 @@ public class LaptopController {
 
     //Se busca dentro de base de datos la laptop segun su id
     @GetMapping("/api/laptops/{id}")
-    public ResponseEntity<Laptop> findOneById(@PathVariable Long id){
+    @ApiOperation("Buscar un libro por id")
+    public ResponseEntity<Laptop> findOneById(@ApiParam("id del tipo Long") @PathVariable Long id){
 
         Optional<Laptop> laptopOpt = laptopRepository.findById(id);
         return laptopOpt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
