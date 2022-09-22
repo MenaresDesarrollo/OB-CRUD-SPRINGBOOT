@@ -4,6 +4,8 @@ import com.ejercicio.DemoOBSB.Entities.Laptop;
 import com.ejercicio.DemoOBSB.Repository.LaptopRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,9 @@ import java.util.Optional;
 
 @RestController
 public class LaptopController {
+
+    private final Logger log = LoggerFactory.getLogger(LaptopController.class);
+
     //Atributos
     private LaptopRepository laptopRepository;
 
@@ -41,6 +46,7 @@ public class LaptopController {
         System.out.println(headers.get("User-Agent"));
 
         if(laptop.getId() != null){//verifica que el id existe
+            log.warn("trying to create a book with id");
             System.out.println("trying to create a book with id");
             return ResponseEntity.badRequest().build();
         }
@@ -52,11 +58,11 @@ public class LaptopController {
     @PutMapping("/api/laptops")
     public ResponseEntity<Laptop> update(@RequestBody Laptop laptop){
         if(laptop.getId() == null){ //si no tiene id quiere decir que si es una creacion
-            System.out.println("Estas tratando de actualizar un laptop existente");
+            log.warn("Estas tratando de actualizar un laptop existente");
             return ResponseEntity.ok(laptop);
         }
         if(!laptopRepository.existsById(laptop.getId())){
-            System.out.println("Estas tratando de actualizar un laptop existente");
+            log.warn("Estas tratando de actualizar un laptop existente");
             return ResponseEntity.notFound().build();
         }
 
@@ -71,7 +77,7 @@ public class LaptopController {
     public ResponseEntity<Laptop> delete(@PathVariable Long id){
 
         if (!laptopRepository.existsById(id)){ //si el id que se busca para eliminar no existe
-            System.out.println("Estas intentando eliminar una laptop que no existe");
+            log.warn("Estas intentando eliminar una laptop que no existe");
             return ResponseEntity.notFound().build();
         }
 
@@ -83,7 +89,7 @@ public class LaptopController {
     //Se eliminan todos los elementos dentro de la lista
     @DeleteMapping("/api/laptops")
     public ResponseEntity<Laptop> deleteAll(){
-        System.out.println("Se aliminan todos los elementos");
+        log.warn("Se aliminan todos los elementos");
         laptopRepository.deleteAll();
         return  ResponseEntity.noContent().build();
     }
