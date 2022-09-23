@@ -1,6 +1,6 @@
-package com.ejercicio.DemoOBSB.Repository;
+package com.ejercicio.DemoOBSB.repository;
 
-import com.ejercicio.DemoOBSB.Entities.Laptop;
+import com.ejercicio.DemoOBSB.entities.Laptop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.ejercicio.DemoOBSB.Controller;
+package com.ejercicio.DemoOBSB.controller;
 
-import com.ejercicio.DemoOBSB.Entities.Laptop;
-import com.ejercicio.DemoOBSB.Repository.LaptopRepository;
+import com.ejercicio.DemoOBSB.entities.Laptop;
+import com.ejercicio.DemoOBSB.repository.LaptopRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ public class LaptopController {
     //Atributos
     private LaptopRepository laptopRepository;
 
-    //Constructores
+
     public LaptopController(LaptopRepository laptopRepository){this.laptopRepository = laptopRepository;}
 
     //Desde LaptopController crear un método que devuelva una lista de objetos Laptop
@@ -42,7 +42,7 @@ public class LaptopController {
 
     // crear un nuevo libro en base de datos
     @PostMapping("/api/laptops")
-    public ResponseEntity<Object> create(@RequestBody Laptop laptop, @RequestHeader HttpHeaders headers){
+    public ResponseEntity<Laptop> create(@RequestBody Laptop laptop, @RequestHeader HttpHeaders headers){
         System.out.println(headers.get("User-Agent"));
 
         if(laptop.getId() != null){//verifica que el id existe

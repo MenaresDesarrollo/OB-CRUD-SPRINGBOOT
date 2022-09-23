@@ -1,7 +1,7 @@
 package com.ejercicio.DemoOBSB;
 
-import com.ejercicio.DemoOBSB.Entities.Laptop;
-import com.ejercicio.DemoOBSB.Repository.LaptopRepository;
+import com.ejercicio.DemoOBSB.entities.Laptop;
+import com.ejercicio.DemoOBSB.repository.LaptopRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

@@ -1,6 +1,6 @@
-package com.ejercicio.DemoOBSB.Controller;
+package com.ejercicio.DemoOBSB.controller;
 
-import com.ejercicio.DemoOBSB.Entities.Laptop;
+import com.ejercicio.DemoOBSB.entities.Laptop;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,19 +57,28 @@ class LaptopControllerTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        //headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
         String json = """
+                {
+                    "marca": "asd",
+                    "modelo": "Idea 34",
+                    "procesador": "i7-v8",
+                    "price": 6500.0,
+                    "releaseDate": "2021-12-09",
+                    "online": true
+                }
                 """;
 
-        HttpEntity<String> request = new HttpEntity<>(json, headers);
+        HttpEntity<String> request = new HttpEntity<>(json,headers);
 
         ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/laptops", HttpMethod.POST, request, Laptop.class);
 
         Laptop result = response.getBody();
 
         assertEquals(1L, result.getId());
-        assertEquals("Laptop creado con test", result.getMarca());
+        assertEquals("asd", result.getMarca());
 
     }
 }

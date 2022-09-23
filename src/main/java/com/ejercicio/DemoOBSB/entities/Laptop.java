@@ -1,4 +1,4 @@
-package com.ejercicio.DemoOBSB.Entities;
+package com.ejercicio.DemoOBSB.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
