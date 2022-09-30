@@ -40,7 +40,7 @@ public class LaptopController {
         return laptopOpt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // crear un nuevo libro en base de datos
+    // crear un nuevo laptop en base de datos
     @PostMapping("/api/laptops")
     public ResponseEntity<Laptop> create(@RequestBody Laptop laptop, @RequestHeader HttpHeaders headers){
         System.out.println(headers.get("User-Agent"));
