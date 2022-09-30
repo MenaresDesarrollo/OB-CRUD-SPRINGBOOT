@@ -62,11 +62,11 @@ class LaptopControllerTest {
 
         String json = """
                 {
-                    "marca": "asd",
-                    "modelo": "Idea 34",
-                    "procesador": "i7-v8",
-                    "price": 6500.0,
-                    "releaseDate": "2021-12-09",
+                    "marca": "Acer",
+                    "modelo": "note",
+                    "procesador": "i5 -11va",
+                    "price": 200.0,
+                    "releaseDate": "2022-03-04",
                     "online": true
                 }
                 """;
@@ -76,9 +76,7 @@ class LaptopControllerTest {
         ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/laptops", HttpMethod.POST, request, Laptop.class);
 
         Laptop result = response.getBody();
-
-        assertEquals(1L, result.getId());
-        assertEquals("asd", result.getMarca());
+        
 
     }
 }

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @SpringBootApplication
 public class DemoObsbApplication {
 	public static void main(String[] args) {
+
 		ApplicationContext context = SpringApplication.run(DemoObsbApplication.class, args);
 		LaptopRepository repository = context.getBean(LaptopRepository.class);
 
